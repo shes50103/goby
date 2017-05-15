@@ -56,19 +56,19 @@ const (
 	Eq    = "=="
 	NotEq = "!="
 
-	True   = "TRUE"
-	False  = "FALSE"
-	Null   = "Null"
-	If     = "IF"
-	Else   = "ELSE"
-	Return = "RETURN"
-	Def    = "DEF"
-	Self   = "SELF"
-	End    = "END"
-	While  = "WHILE"
-	Do     = "DO"
-	Yield  = "YIELD"
-
+	True               = "TRUE"
+	False              = "FALSE"
+	Null               = "Null"
+	If                 = "IF"
+	Else               = "ELSE"
+	Return             = "RETURN"
+	Def                = "DEF"
+	Self               = "SELF"
+	End                = "END"
+	While              = "WHILE"
+	Do                 = "DO"
+	Yield              = "YIELD"
+	For                = "FOR"
 	ResolutionOperator = "::"
 )
 
@@ -85,6 +85,7 @@ var keywords = map[string]Type{
 	"while":  While,
 	"do":     Do,
 	"yield":  Yield,
+	"for":    For,
 }
 
 // LookupIdent is used for keyword identification

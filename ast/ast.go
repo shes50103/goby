@@ -491,21 +491,24 @@ type ForStatement struct {
 	Token     token.Token
 	Condition Expression
 	Body      *BlockStatement
+	Name      *InstanceVariable
 }
 
 func (fs *ForStatement) statementNode() {}
 func (fs *ForStatement) TokenLiteral() string {
-	return ws.Token.Literal
+	return fs.Token.Literal
 }
 
-func (fs *WhileStatement) String() string {
+func (fs *ForStatement) String() string {
 	var out bytes.Buffer
 
 	out.WriteString("for ")
 	out.WriteString("in")
 	out.WriteString(" do\n")
-	out.WriteString(ws.Body.String())
+	out.WriteString(fs.Body.String())
 	out.WriteString("\nend")
+
+	return out.String()
 }
 
 type YieldExpression struct {

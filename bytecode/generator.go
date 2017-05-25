@@ -147,7 +147,7 @@ func (g *Generator) compileStatement(is *instructionSet, statement ast.Statement
 	case *ast.WhileStatement:
 		g.compileWhileStmt(is, stmt, scope, table)
 	case *ast.ForStatement:
-		g.compileForStms(is, stms, scope, table)
+		g.compileForStms(is, stmt, scope, table)
 	}
 }
 

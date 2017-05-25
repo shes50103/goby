@@ -254,4 +254,11 @@ func (p *Parser) parseWhileStatement() *ast.WhileStatement {
 
 func (p *Parser) parseForStatement() *ast.ForStatement {
 	ws := &ast.ForStatement{Token: p.curToken}
+
+	p.nextToken()
+
+	ws.Name = &ast.InstanceVariable{Token: p.curToken, Value: p.curToken.Literal}
+	p.nextToken()
+
+	return ws
 }

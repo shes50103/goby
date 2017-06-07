@@ -147,7 +147,6 @@ func TestMethodCallWithoutSelf(t *testing.T) {
 	}
 }
 
-
 func TestClassMethodEvaluation(t *testing.T) {
 	tests := []struct {
 		input    string
@@ -271,8 +270,6 @@ func TestClassMethodEvaluation(t *testing.T) {
 		}
 	}
 }
-
-
 
 func TestSelfExpressionEvaluation(t *testing.T) {
 	tests := []struct {
@@ -798,7 +795,7 @@ func TestMethodCallWithoutParens(t *testing.T) {
 		{
 			`
 			class Foo
-			  def set_x(x0)
+			  def set_x x0
 			    @x = x0
 			  end
 
@@ -817,21 +814,22 @@ func TestMethodCallWithoutParens(t *testing.T) {
 		{
 			`
 			class Foo
-			  def set_x x1
+			  def set_x x1, x2, x3
 			    @x = x1
+			    @y = x2
 			  end
 
 			  def foo
-			    set_x(10)
+			    set_x(10,11,12)
 			    a = 10
-			    @x + a
+			    @x + a +@y
 			  end
 			end
 
 			f = Foo.new
 			f.foo
 			`,
-			20,
+			31,
 		},
 	}
 
@@ -845,4 +843,3 @@ func TestMethodCallWithoutParens(t *testing.T) {
 		testIntegerObject(t, evaluated, tt.expected)
 	}
 }
-

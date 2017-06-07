@@ -304,7 +304,6 @@ func (p *Parser) parseCallExpression(receiver ast.Expression) ast.Expression {
 
 	if p.curTokenIs(token.LParen) { // call expression doesn't have a receiver foo(x) || foo()
 		// method name is receiver, for example 'foo' of foo(x)
-		fmt.Println("______LParen")
 
 		m := receiver.(*ast.Identifier).Value
 		// receiver is self
@@ -315,8 +314,7 @@ func (p *Parser) parseCallExpression(receiver ast.Expression) ast.Expression {
 		// current token is identifier (method name)
 		exp = &ast.CallExpression{Token: p.curToken, Receiver: receiver, Method: m}
 		exp.Arguments = p.parseCallArguments()
-	} else if p.curTokenIs(token.Ident){
-		fmt.Println("token.Ident!!!!!!!")
+	} else if p.curTokenIs(token.Ident) {
 
 		m := receiver.(*ast.Identifier).Value
 		// receiver is self
@@ -328,8 +326,7 @@ func (p *Parser) parseCallExpression(receiver ast.Expression) ast.Expression {
 		exp = &ast.CallExpression{Token: p.curToken, Receiver: receiver, Method: m}
 		exp.Arguments = p.parseCallArgumentsWithoutParens()
 
-	}else if p.curTokenIs(token.Dot) { // call expression has a receiver like: p.foo
-		fmt.Println("______Dot")
+	} else if p.curTokenIs(token.Dot) { // call expression has a receiver like: p.foo
 
 		exp = &ast.CallExpression{Token: p.curToken, Receiver: receiver}
 
@@ -441,7 +438,6 @@ func (p *Parser) parseCallArgumentsWithoutParens() []ast.Expression {
 
 	return args
 }
-
 
 func (p *Parser) parseYieldExpression() ast.Expression {
 	ye := &ast.YieldExpression{Token: p.curToken}
